@@ -53,7 +53,7 @@ for f in ehome/*; do
 done
 
 # ensure packages are installed
-ensurepkg -y i3 rofi feh alacritty picom flameshot playerctl tuned mold
+ensurepkg -y i3 rofi feh alacritty picom flameshot playerctl tuned mold lightdm slick-greeter
 
 # change script permissions to executable
 sudo chmod +x ~/.config/i3/scripts/wallpaper_manager.sh
@@ -74,11 +74,22 @@ else
     echo "tuned profile is already $TUNED_TARGET_PROFILE"
 fi
 
+# disable current dm and enable LightDM/slick-greeter
+CURRENT_DM=$(systemctl show -p Id display-manager.service | cut -d'=' -f2)
+
+if [[ "$CURRENT_DM" != "lightdm.service" ]]; then
+    sudo systemctl disable display-manager.service
+    sudo systemctl enable lightdm.service --force
+else
+    echo "LightDM is already the default dm"
+fi
+
 # restart i3 to apply changes if i3 is running
 if pgrep -x i3 >/dev/null 2>&1; then
     i3-msg reload
     i3-msg restart
     echo "i3 reloaded"
 fi
+
 
 echo "installation complete please logout and login again to apply all changes"
