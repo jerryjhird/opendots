@@ -1,9 +1,6 @@
 # interactive terminal check
 [[ $- != *i* ]] && return
 
-# variables
-export GIT_USERNAME=$(git config --global user.name)
-
 # env variables
 export CC="gcc"
 export LD="mold"
@@ -42,7 +39,7 @@ alias grep='grep --colour=auto'
 alias back='cd "$OLDPWD"'
 alias ..='cd ..'
 
-
+#path
 export PATH=$HOME/.local/bin:$PATH
 
 # setup cargo (if exists)
