@@ -7,6 +7,7 @@ exec --no-startup-id ~/.config/i3/scripts/wallpaper_manager.sh ~/.wallpapers/g1
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id nm-applet
+exec --no-startup-id dunst
 
 floating_modifier $mod
 

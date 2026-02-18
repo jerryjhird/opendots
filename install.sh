@@ -53,7 +53,7 @@ for f in ehome/*; do
 done
 
 # ensure packages are installed
-ensurepkg -y i3 rofi feh alacritty picom flameshot playerctl tuned mold lightdm slick-greeter
+ensurepkg -y i3 rofi feh alacritty picom flameshot playerctl dunst tuned mold lightdm slick-greeter
 
 # change script permissions to executable
 sudo chmod +x ~/.config/i3/scripts/wallpaper_manager.sh
@@ -90,6 +90,5 @@ if pgrep -x i3 >/dev/null 2>&1; then
     i3-msg restart
     echo "i3 reloaded"
 fi
-
 
 echo "installation complete please logout and login again to apply all changes"
